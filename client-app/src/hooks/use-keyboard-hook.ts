@@ -4,13 +4,13 @@ import { Keyboard, KeyboardEvent } from 'react-native';
 export const useKeyboard = () => {
     const [keyboardHeight, setKeyboardHeight] = useState(0);
 
-    function onKeyboardDidShow(e: KeyboardEvent) {
+    const onKeyboardDidShow = (e: KeyboardEvent) => {
         setKeyboardHeight(e.endCoordinates.height);
-    }
+    };
 
-    function onKeyboardDidHide() {
+    const onKeyboardDidHide = () => {
         setKeyboardHeight(0);
-    }
+    };
 
     useEffect(() => {
         const showSubscription = Keyboard.addListener(
