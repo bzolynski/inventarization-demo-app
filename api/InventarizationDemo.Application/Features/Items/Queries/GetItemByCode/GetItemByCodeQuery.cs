@@ -1,0 +1,1 @@
+﻿public sealed record GetItemByCodeQuery(string Code) : IQuery<Item>;

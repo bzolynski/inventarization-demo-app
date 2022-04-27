@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
+	  <Nullable>disable</Nullable>
+	  <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>06cd0a53-84f2-43ad-a134-dbad3934acd8</UserSecretsId>
   </PropertyGroup>
 
@@ -12,7 +12,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\InventarizationDemo.Application\InventarizationDemo.Application.csproj" />
+    <ProjectReference Include="..\InventarizationDemo.DataAccess\InventarizationDemo.Persistence.csproj" />
   </ItemGroup>
 
 </Project>

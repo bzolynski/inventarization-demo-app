@@ -4,7 +4,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 public static class DependencyInjection
 {
-    public static void AddDataAccess(this IServiceCollection services, IConfiguration configuration)
+    public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("Default")));
     }
