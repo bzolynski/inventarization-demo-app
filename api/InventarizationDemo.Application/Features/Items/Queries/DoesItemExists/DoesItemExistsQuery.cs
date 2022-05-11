@@ -1,0 +1,1 @@
+﻿public sealed record DoesItemExistsQuery(string Code) : IQuery<bool>;
