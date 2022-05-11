@@ -12,8 +12,8 @@ public sealed class CreateItemHandler : ICommandHandler<CreateItemCommand, Item>
     {
         if (applicationDbContext.Items.Any(i => i.Code == request.Item.Code))
             throw new StatusCodeException($"Item with code { request.Item.Code } exists", System.Net.HttpStatusCode.BadRequest);
-        EntityEntry<Item> result = await applicationDbContext.Items.AddAsync(request.Item);
-        await applicationDbContext.SaveChangesAsync();
+        EntityEntry<Item> result = await applicationDbContext.Items.AddAsync(request.Item, cancellationToken);
+        await applicationDbContext.SaveChangesAsync(cancellationToken);
         return result.Entity;
     }
 }
