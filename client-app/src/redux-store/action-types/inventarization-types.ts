@@ -20,8 +20,4 @@ export interface InventarizationTypes {
     SET_MANUAL_INPUT_VISIBLE: {
         manualInputVisible: boolean;
     };
-    SET_CODE: {
-        code: string;
-    };
-    CLOSE_POSITION_FORM: any;
 }

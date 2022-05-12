@@ -31,16 +31,3 @@ export const setManualInputVisible =
             manualInputVisible: manualInputVisible,
         });
     };
-
-export const setCode = (code: string) => (dispatch: Dispatch) => {
-    dispatch({
-        type: inventarizationTypes.SET_CODE,
-        code: code,
-    });
-};
-
-export const closePositionForm = () => (dispatch: Dispatch) => {
-    dispatch({
-        type: inventarizationTypes.CLOSE_POSITION_FORM,
-    });
-};

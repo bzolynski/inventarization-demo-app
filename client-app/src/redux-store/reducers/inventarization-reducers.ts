@@ -6,8 +6,6 @@ export interface IInventarizationState {
     scanning: boolean;
     pickerVisible: boolean;
     manualInputVisible: boolean;
-    positionFormVisible: boolean;
-    code: string | undefined;
 }
 
 const defaultState = (): IInventarizationState => ({
@@ -15,8 +13,6 @@ const defaultState = (): IInventarizationState => ({
     scanning: false,
     pickerVisible: false,
     manualInputVisible: false,
-    positionFormVisible: false,
-    code: undefined,
 });
 
 export default (state = defaultState(), action: any): IInventarizationState => {
@@ -51,22 +47,6 @@ export default (state = defaultState(), action: any): IInventarizationState => {
             return {
                 ...state,
                 manualInputVisible: data.manualInputVisible,
-            };
-        }
-        case inventarizationActionTypes.SET_CODE: {
-            const data: inventarizationActionTypes.InventarizationTypes['SET_CODE'] =
-                action;
-            return {
-                ...state,
-                positionFormVisible: true,
-                code: data.code,
-            };
-        }
-        case inventarizationActionTypes.CLOSE_POSITION_FORM: {
-            return {
-                ...state,
-                positionFormVisible: false,
-                code: undefined,
             };
         }
 
