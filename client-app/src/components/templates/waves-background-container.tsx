@@ -1,5 +1,10 @@
 import React from 'react';
-import { ImageBackground, StyleProp, ViewStyle } from 'react-native';
+import {
+    Dimensions,
+    ImageBackground,
+    StyleProp,
+    ViewStyle,
+} from 'react-native';
 import wavesBackgroundImg from '@assets/waves-background.png';
 import { BackgroundColors } from '@theme/colors';
 
@@ -14,7 +19,11 @@ const WavesBackgroundContainer: React.FC<Props> = ({ children, ...props }) => {
             style={[
                 {
                     justifyContent: 'center',
-                    flex: 1,
+                    position: 'absolute',
+                    left: 0,
+                    top: 0,
+                    width: Dimensions.get('window').width,
+                    height: Dimensions.get('window').height,
                     backgroundColor: BackgroundColors.secondaryBgColor,
                 },
                 props.style,
