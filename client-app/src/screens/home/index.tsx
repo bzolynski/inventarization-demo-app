@@ -12,7 +12,7 @@ import PaddingContainer from '@src/components/templates/padding-container';
 import TopBarSafeContainer from '@src/components/templates/top-bar-safe-container';
 import Ionicon from 'react-native-vector-icons/Ionicons';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { AuthStackParamList } from '@src/routing';
+import { AuthStackParamList } from '@src/routing/auth-stack';
 
 type HomeNavigationProp = NativeStackScreenProps<AuthStackParamList, 'Home'>;
 
