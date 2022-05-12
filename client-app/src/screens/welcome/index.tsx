@@ -1,11 +1,17 @@
 import { AppButton } from '@components/atoms/app-button';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import { Colors } from '@theme/colors';
-import { useNavigation } from '@react-navigation/native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import styles from './styles';
+import { WelcomeStackParamList } from '@src/routing/welcome-stack';
 
-const WelcomeScreen = () => {
-    const navigation = useNavigation();
+type InventarisationNavigationProp = NativeStackScreenProps<
+    WelcomeStackParamList,
+    'Welcome'
+>;
+
+const WelcomeScreen = ({ navigation }: InventarisationNavigationProp) => {
     return (
         <View style={styles.container}>
             <View style={styles.textContainer}>
@@ -34,45 +40,3 @@ const WelcomeScreen = () => {
 };
 
 export default WelcomeScreen;
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-end',
-        paddingBottom: 120,
-        width: '100%',
-        paddingHorizontal: 30,
-    },
-    textContainer: {
-        display: 'flex',
-        width: '100%',
-        flexDirection: 'column',
-    },
-    text: {
-        color: Colors.main.constrast,
-    },
-    title: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-    description: {
-        fontSize: 13,
-        marginBottom: 10,
-    },
-    description2: {
-        fontSize: 18,
-        fontWeight: 'bold',
-        marginBottom: 20,
-    },
-
-    loginButton: {
-        width: '100%',
-    },
-    contactUsButton: {
-        width: '100%',
-        marginTop: 10,
-    },
-});

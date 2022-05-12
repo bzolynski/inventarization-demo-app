@@ -15,9 +15,6 @@ import { Colors } from '@theme/colors';
 import { AppButton } from '@components/atoms/app-button';
 import { AppTextInput } from '@components/atoms/app-text-input';
 import { SlideDownContainer } from '@components/templates/slide-down-container';
-import { Dimensions } from 'react-native';
-
-type SignIn = ReturnType<typeof signIn>;
 
 type Inputs = {
     login: string;
@@ -34,7 +31,7 @@ const LoginScreen = () => {
     const dispatch = useDispatch();
 
     const onSubmit: SubmitHandler<Inputs> = (data) => {
-        dispatch<SignIn>(signIn(data.login, data.password));
+        dispatch(signIn(data.login, data.password));
     };
 
     return (

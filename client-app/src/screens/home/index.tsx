@@ -3,27 +3,22 @@ import { StyleSheet, Text, View } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { IAuthState } from '@redux-store/reducers/auth-reducers';
 import { IStore } from '@redux-store/reducers/reducers';
-import LogoutSVG from '@assets/logout.svg';
 import MenuTile from '@components/molecules/menu-tile';
 import { signOut } from '@redux-store/actions/auth-actions';
 import { Colors } from '@theme/colors';
 import inventorizationImg from '@assets/stocktaking.png';
 import warehouseImg from '@assets/warehouse.png';
-import { useNavigation } from '@react-navigation/native';
 import PaddingContainer from '@src/components/templates/padding-container';
 import TopBarSafeContainer from '@src/components/templates/top-bar-safe-container';
 import Ionicon from 'react-native-vector-icons/Ionicons';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { AuthStackParamList } from '@src/routing';
 
-type SignOut = ReturnType<typeof signOut>;
+type HomeNavigationProp = NativeStackScreenProps<AuthStackParamList, 'Home'>;
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: HomeNavigationProp) => {
     const state = useSelector<IStore, IAuthState>((state) => state.authReducer);
     const dispatch = useDispatch();
-    const navigation = useNavigation();
-
-    const onSignOutClick = () => {
-        dispatch<SignOut>(signOut());
-    };
 
     return (
         <TopBarSafeContainer>
@@ -42,7 +37,7 @@ const HomeScreen = () => {
                             name="exit-outline"
                             size={40}
                             color={Colors.main.constrast}
-                            onPress={() => onSignOutClick()}
+                            onPress={() => dispatch(signOut())}
                             style={{ transform: [{ rotate: '180deg' }] }}
                         />
                     </View>
