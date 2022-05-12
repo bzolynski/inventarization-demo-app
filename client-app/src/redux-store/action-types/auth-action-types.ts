@@ -8,5 +8,4 @@ export interface AuthTypes {
         userToken: string | null;
         username: string;
     };
-    SIGN_OUT: any;
 }
