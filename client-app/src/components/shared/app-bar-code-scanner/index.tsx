@@ -1,5 +1,4 @@
-import { BackgroundColors, Colors } from '@src/theme/colors';
-import { BarCodeScanner } from 'expo-barcode-scanner';
+import { Colors } from '@src/theme/colors';
 import {
     BarCodeScanningResult,
     Camera,
@@ -7,11 +6,11 @@ import {
     PermissionStatus,
 } from 'expo-camera';
 import { FlashMode } from 'expo-camera/build/Camera.types';
-
 import React, { useEffect, useState } from 'react';
-import { StyleSheet, Text, Vibration, View } from 'react-native';
-import BackdropSpinner from '../molecules/backdrop-spinner';
-import { AppButton } from './app-button';
+import { Text, Vibration, View } from 'react-native';
+import BackdropSpinner from '@src/components/molecules/backdrop-spinner';
+import { AppButton } from '@src/components/atoms/app-button';
+import styles from './styles';
 
 type ScannerIndicator = 'none' | 'square' | 'line';
 
@@ -79,19 +78,10 @@ const AppBarCodeScanner: React.FC<Props> = ({
     return (
         <Camera
             flashMode={flashMode}
-            style={[[StyleSheet.absoluteFill], props.style]}
+            style={[{ flex: 1 }, props.style]}
             onBarCodeScanned={scanning ? handleBarcodeScanned : undefined}>
-            <View
-                style={[
-                    StyleSheet.absoluteFill,
-                    {
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                    },
-                ]}>
+            <View style={styles.childContainer}>
                 {children}
-
                 {scannerIndicator !== 'none' ? (
                     <View
                         style={
@@ -107,18 +97,3 @@ const AppBarCodeScanner: React.FC<Props> = ({
 };
 
 export default AppBarCodeScanner;
-
-const styles = StyleSheet.create({
-    line: {
-        height: 3,
-        width: '70%',
-        backgroundColor: Colors.secondary.default,
-    },
-    square: {
-        width: '70%',
-        borderColor: Colors.secondary.default,
-        borderWidth: 2,
-        borderRadius: 5,
-        aspectRatio: 1 / 1,
-    },
-});

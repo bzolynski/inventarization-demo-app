@@ -1,23 +1,13 @@
 import { BarCodeScanningResult } from 'expo-camera';
 import { useState } from 'react';
-import {
-    Animated,
-    Platform,
-    Pressable,
-    StatusBar,
-    StyleSheet,
-    Text,
-    View,
-    ViewProps,
-    ViewStyle,
-} from 'react-native';
+import { Pressable, StyleSheet, Text, View, ViewProps } from 'react-native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
-import AppBarCodeScanner from '../atoms/app-bar-code-scanner';
-import BackButtonIcon from '../atoms/back-button-icon';
+import AppBarCodeScanner from '@src/components/shared/app-bar-code-scanner';
+import BackButtonIcon from '@src/components/atoms/back-button-icon';
+import styles from './styles';
 
 type CustomProps = {
     scanning: boolean;
-    style?: Animated.AnimatedProps<ViewStyle>;
     onScanned?: (scanningResult: BarCodeScanningResult) => void;
     onBackButtonClicked?: () => void;
     onManualInputButtonClicked?: () => void;
@@ -30,37 +20,22 @@ const InventarizationScanner: React.FC<Props> = ({
     onScanned,
     onBackButtonClicked,
     onManualInputButtonClicked,
-    ...viewProps
 }) => {
     const [isTorchOn, setIsTorchOn] = useState(false);
     return (
-        <Animated.View {...viewProps}>
+        <View style={styles.wrapper}>
             <AppBarCodeScanner
                 flashMode={isTorchOn ? 'torch' : 'off'}
                 scanning={scanning}
                 onScanned={onScanned}
                 scannerIndicator="line"
                 vibrateOnScan={true}>
-                <View
-                    style={[
-                        StyleSheet.absoluteFill,
-                        {
-                            marginTop:
-                                Platform.OS === 'android'
-                                    ? StatusBar.currentHeight
-                                    : 0,
-                        },
-                    ]}>
+                <View style={[styles.container, StyleSheet.absoluteFill]}>
                     <Pressable
                         onPress={onBackButtonClicked}
                         style={({ pressed }) => [
-                            {
-                                position: 'absolute',
-                                top: 15,
-                                left: 15,
-                                flex: 1,
-                            },
-                            pressed ? styles.pressablePressed : undefined,
+                            styles.backButton,
+                            pressed ? styles.buttonPressed : undefined,
                         ]}>
                         <BackButtonIcon size={40} color={'hsl(0, 0%, 100%)'} />
                     </Pressable>
@@ -81,51 +56,30 @@ const InventarizationScanner: React.FC<Props> = ({
                         onPress={() => {
                             setIsTorchOn(!isTorchOn);
                         }}
-                        style={[
-                            {
-                                position: 'absolute',
-                                bottom: 15,
-                                right: 15,
-                                flex: 1,
-                            },
-                        ]}>
+                        style={styles.torchButton}>
                         {isTorchOn ? (
                             <Ionicon
                                 name="flash-outline"
                                 size={40}
-                                color={
-                                    isTorchOn
-                                        ? 'hsl(50, 75%, 75%)'
-                                        : 'hsl(0, 0%, 100%)'
-                                }
+                                color={'hsl(50, 75%, 75%)'}
                             />
                         ) : (
                             <Ionicon
                                 name="flash-off-outline"
                                 size={40}
-                                color={
-                                    isTorchOn
-                                        ? 'hsl(50, 75%, 75%)'
-                                        : 'hsl(0, 0%, 100%)'
-                                }
+                                color={'hsl(0, 0%, 100%)'}
                             />
                         )}
                     </Pressable>
 
                     <Pressable
                         onPress={() => {
-                            console.log('manual input');
                             if (onManualInputButtonClicked)
                                 onManualInputButtonClicked();
                         }}
                         style={({ pressed }) => [
-                            {
-                                position: 'absolute',
-                                bottom: 15,
-                                left: 15,
-                                flex: 1,
-                            },
-                            pressed ? styles.pressablePressed : undefined,
+                            styles.manualInputButton,
+                            pressed ? styles.buttonPressed : undefined,
                         ]}>
                         <Ionicon
                             name="clipboard-outline"
@@ -135,20 +89,8 @@ const InventarizationScanner: React.FC<Props> = ({
                     </Pressable>
                 </View>
             </AppBarCodeScanner>
-        </Animated.View>
+        </View>
     );
 };
 
 export default InventarizationScanner;
-
-const styles = StyleSheet.create({
-    roundPressable: {
-        borderRadius: 40,
-        borderColor: 'hsl(0, 0%, 100%)',
-        borderWidth: 2,
-        padding: 3,
-    },
-    pressablePressed: {
-        transform: [{ scale: 1.1 }],
-    },
-});

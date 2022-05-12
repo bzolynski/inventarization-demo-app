@@ -4,12 +4,7 @@ import { Modal, StyleSheet, View } from 'react-native';
 import PaddingContainer from '@src/components/templates/padding-container';
 import TopBarSafeContainer from '@src/components/templates/top-bar-safe-container';
 import { useNavigation } from '@react-navigation/native';
-import InventarizationScanner from '@src/components/organisms/inventarisation-scanner';
-import { BarCodeScanningResult } from 'expo-camera';
-import InventarisationPositions from '@src/components/organisms/inventarisation-positions';
 import { Position } from '@src/models';
-import { AxiosError } from 'axios';
-import { getByCode } from '@src/api';
 import { useDispatch, useSelector } from 'react-redux';
 import { IStore } from '@src/redux-store/reducers/reducers';
 import { IInventarizationState } from '@src/redux-store/reducers/inventarization-reducers';
@@ -20,9 +15,11 @@ import {
     setScanning,
     closePositionForm,
 } from '@src/redux-store/actions/inventarization-actions';
-import InventarizationBasketPicker from '@src/components/molecules/inventarization-basket-picker';
-import InventarizationManualInput from '@src/components/molecules/inventarization-manual-input';
-import InventarizationPositionForm from '@src/components/molecules/inventarization-position-form';
+import BasketPicker from '@src/components/inventarisation/basket-picker';
+import InventarizationManualInput from '@src/components/inventarisation/inventarization-manual-input';
+import InventarizationPositionForm from '@src/components/inventarisation/inventarization-position-form';
+import InventarisationPositions from '@src/components/inventarisation/inventarisation-positions/index.';
+import InventarizationScanner from '@src/components/inventarisation/inventarisation-scanner';
 
 type SetScanning = ReturnType<typeof setScanning>;
 type SetPickerVisible = ReturnType<typeof setPickerVisible>;
@@ -89,7 +86,11 @@ const InventarisationScreen = () => {
                             title="Inventarisation"
                             style={{ marginBottom: 25 }}
                         />
-                        <InventarizationBasketPicker />
+                        <BasketPicker
+                            onBasketSelected={(selectedBasket) =>
+                                dispatch<SetScanning>(setScanning(true))
+                            }
+                        />
                     </PaddingContainer>
                 ) : undefined}
                 <View style={[{ flex: 2.5 }]}>
@@ -109,12 +110,6 @@ const InventarisationScreen = () => {
                     onScanned={(result) => tryLoadItem(result.data)}
                     onBackButtonClicked={() => hideScanner()}
                     onManualInputButtonClicked={() => showManualInput()}
-                    style={{
-                        flex: 1,
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                    }}
                 />
             </Modal>
             <Modal
@@ -124,6 +119,7 @@ const InventarisationScreen = () => {
                 statusBarTranslucent={true}
                 onRequestClose={() => hideManualInput()}>
                 <InventarizationManualInput
+                    onBackButtonClicked={() => hideManualInput()}
                     onSubmit={(code) => {
                         hideManualInput();
                         tryLoadItem(code);
@@ -146,15 +142,3 @@ const InventarisationScreen = () => {
 };
 
 export default InventarisationScreen;
-
-const styles = StyleSheet.create({
-    roundPressable: {
-        borderRadius: 40,
-        borderColor: 'hsl(0, 0%, 100%)',
-        borderWidth: 2,
-        padding: 3,
-    },
-    pressablePressed: {
-        transform: [{ scale: 1.1 }],
-    },
-});

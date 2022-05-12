@@ -1,22 +1,12 @@
 import { useKeyboard } from '@src/hooks';
-import { setManualInputVisible } from '@src/redux-store/actions/inventarization-actions';
 import { Colors } from '@src/theme/colors';
 import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import {
-    Keyboard,
-    Platform,
-    Pressable,
-    StatusBar,
-    StyleSheet,
-    View,
-} from 'react-native';
-import { useDispatch } from 'react-redux';
-import { AppButton } from '../atoms/app-button';
-import { AppTextInput } from '../atoms/app-text-input';
-import BackButtonIcon from '../atoms/back-button-icon';
-
-type SetManualInputVisible = ReturnType<typeof setManualInputVisible>;
+import { Keyboard, Pressable, View } from 'react-native';
+import { AppButton } from '../../atoms/app-button';
+import { AppTextInput } from '../../atoms/app-text-input';
+import BackButtonIcon from '../../atoms/back-button-icon';
+import styles from './styles';
 
 type Inputs = {
     code: string;
@@ -24,14 +14,12 @@ type Inputs = {
 
 type Props = {
     onSubmit: (code: string) => void;
+    onBackButtonClicked: () => void;
 };
 
 const InventarizationManualInput = (props: Props) => {
-    const dispatch = useDispatch();
     const keyboardHeight = useKeyboard();
 
-    const hideManualInput = () =>
-        dispatch<SetManualInputVisible>(setManualInputVisible(false));
     const {
         control,
         handleSubmit,
@@ -47,37 +35,13 @@ const InventarizationManualInput = (props: Props) => {
     };
 
     return (
-        <View
-            style={[
-                StyleSheet.absoluteFill,
-                {
-                    backgroundColor: 'hsla(0, 0%, 0%, 0.9)',
-                },
-            ]}>
-            <View
-                style={[
-                    StyleSheet.absoluteFill,
-                    {
-                        marginTop:
-                            Platform.OS === 'android'
-                                ? StatusBar.currentHeight
-                                : 0,
-                    },
-                ]}>
+        <View style={styles.wrapper}>
+            <View style={styles.container}>
                 <Pressable
-                    onPress={() => hideManualInput()}
+                    onPress={() => props.onBackButtonClicked()}
                     style={({ pressed }) => [
-                        {
-                            position: 'absolute',
-                            top: 15,
-                            left: 15,
-                            flex: 1,
-                        },
-                        pressed
-                            ? {
-                                  transform: [{ scale: 1.1 }],
-                              }
-                            : undefined,
+                        styles.backButton,
+                        pressed ? styles.buttonPressed : undefined,
                     ]}>
                     <BackButtonIcon size={40} color={'hsl(0, 0%, 100%)'} />
                 </Pressable>
@@ -85,13 +49,8 @@ const InventarizationManualInput = (props: Props) => {
                 {/* form */}
                 <View
                     style={[
-                        StyleSheet.absoluteFill,
-                        {
-                            justifyContent: 'center',
-                            alignItems: 'center',
-                            padding: 20,
-                            marginBottom: keyboardHeight,
-                        },
+                        styles.formWrapper,
+                        { marginBottom: keyboardHeight },
                     ]}>
                     <Controller
                         control={control}
@@ -111,19 +70,12 @@ const InventarizationManualInput = (props: Props) => {
                             />
                         )}
                     />
-                    <View
-                        style={[
-                            {
-                                display: 'flex',
-                                flexDirection: 'row',
-                                marginTop: 20,
-                            },
-                        ]}>
+                    <View style={styles.buttonsWrapper}>
                         <AppButton
                             color={Colors.secondary}
                             title="Cancel"
                             buttonStyle="raised"
-                            onPress={() => hideManualInput()}
+                            onPress={() => props.onBackButtonClicked()}
                             styles={{ flex: 1, marginRight: 10 }}
                         />
                         <AppButton

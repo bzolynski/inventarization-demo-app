@@ -52,9 +52,13 @@ const InventarizationPositionForm = (props: Props) => {
     };
 
     return (
-        <View>
-            <Text>TEMP</Text>
-        </View>
+        <>
+            {isBusy ? undefined : (
+                <View>
+                    <Text>TEMP</Text>
+                </View>
+            )}
+        </>
     );
 };
 
