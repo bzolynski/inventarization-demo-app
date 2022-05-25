@@ -10,6 +10,9 @@ public sealed class CreateInventarisationHandler : ICommandHandler<CreateInventa
     }
     public async Task<int> Handle(CreateInventarisationCommand request, CancellationToken cancellationToken)
     {
+        request.Inventarization.State = DocumentState.Pending;
+        request.Inventarization.Type = DocumentType.Inventarisation;
+        request.Inventarization.Date = DateTime.Today;
         EntityEntry<InventarisationDocument> result = await applicationDbContext.AddAsync(request.Inventarization, cancellationToken);
         await applicationDbContext.SaveChangesAsync(cancellationToken);
         return result.Entity.Id;

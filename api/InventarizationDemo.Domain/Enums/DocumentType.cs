@@ -1,4 +1,1 @@
-﻿public enum DocumentType
-{
-    inventarisation
-}
+﻿
