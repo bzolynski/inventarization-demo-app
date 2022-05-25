@@ -1,1 +1,1 @@
-﻿public sealed record GetManyInventarizationsQuery() : IQuery<IEnumerable<Inventarization>>;
+﻿public sealed record GetManyInventarizationsQuery() : IQuery<IEnumerable<InventarisationDocument>>;

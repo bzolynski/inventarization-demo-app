@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-public sealed class GetInventarizationHandler : IQueryHandler<GetInventarizationQuery, Inventarization>
+public sealed class GetInventarizationHandler : IQueryHandler<GetInventarizationQuery, InventarisationDocument>
 {
     private readonly ApplicationDbContext applicationDbContext;
 
@@ -8,8 +8,8 @@ public sealed class GetInventarizationHandler : IQueryHandler<GetInventarization
     {
         this.applicationDbContext = applicationDbContext;
     }
-    public async Task<Inventarization> Handle(GetInventarizationQuery request, CancellationToken cancellationToken)
+    public async Task<InventarisationDocument> Handle(GetInventarizationQuery request, CancellationToken cancellationToken)
     {
-        return await applicationDbContext.Inventarizations.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
+        return await applicationDbContext.InventarizationDocuments.FirstOrDefaultAsync(x => x.Id == request.Id, cancellationToken);
     }
 }

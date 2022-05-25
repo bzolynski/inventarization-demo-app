@@ -1,9 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-public class InventarisationController : BaseController
+public class InventarisationDocumentController : BaseController
 {
     [HttpPost("create")]
-    public async Task<IActionResult> Create(Inventarization createRequest)
+    public async Task<IActionResult> Create(InventarisationDocument createRequest)
     {
         return Ok(await Mediator.Send(new CreateInventarisationCommand(createRequest)));
     }

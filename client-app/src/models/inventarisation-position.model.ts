@@ -1,6 +1,6 @@
 export interface Position {
     id: number;
-    inventarisationId: number;
+    documentId: number;
     userId: number;
     name: string;
     code: string;

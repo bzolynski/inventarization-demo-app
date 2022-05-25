@@ -45,7 +45,7 @@ const InventarisationScreen = ({ navigation }: NavigationProp) => {
                 name: `item no. ${index + 1}`,
                 code: '0123456789',
                 date: '26.04.2022 21:37',
-                inventarisationId: index,
+                documentId: index,
                 localization: 'Local',
                 userId: index,
                 change: index,

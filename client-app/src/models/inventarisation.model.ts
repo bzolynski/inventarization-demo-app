@@ -1,4 +1,4 @@
-export interface Inventarisation {
+export interface InventarisationDocument {
     id: number;
     documentId: number;
     name: string;

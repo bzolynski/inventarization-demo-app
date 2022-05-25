@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
+namespace InventarizationDemo.Persistence.Migrations
+{
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20220426130527_Initial")]
     partial class Initial
@@ -143,3 +145,4 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 #pragma warning restore 612, 618
         }
     }
+}

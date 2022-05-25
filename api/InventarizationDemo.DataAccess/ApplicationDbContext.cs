@@ -7,7 +7,7 @@ public sealed class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Inventarization> Inventarizations { get; set; }
+    public DbSet<InventarisationDocument> InventarizationDocuments { get; set; }
     public DbSet<InventarizationPosition> InventarizationPositions { get; set; }
     public DbSet<Item> Items { get; set; }
     public DbSet<Localization> Localizations { get; set; }

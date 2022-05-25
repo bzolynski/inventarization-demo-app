@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InventarizationDemo.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220525113256_Add_Document_Base__Rename_Inventarisation")]
+    partial class Add_Document_Base__Rename_Inventarisation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -51,7 +53,7 @@ namespace InventarizationDemo.Persistence.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("DocumentId")
+                    b.Property<int>("InventarizationId")
                         .HasColumnType("int");
 
                     b.Property<int>("ItemId")
@@ -65,7 +67,7 @@ namespace InventarizationDemo.Persistence.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DocumentId");
+                    b.HasIndex("InventarizationId");
 
                     b.HasIndex("ItemId");
 
@@ -111,9 +113,9 @@ namespace InventarizationDemo.Persistence.Migrations
 
             modelBuilder.Entity("InventarizationPosition", b =>
                 {
-                    b.HasOne("InventarisationDocument", "Document")
+                    b.HasOne("InventarisationDocument", "Inventarization")
                         .WithMany("Positions")
-                        .HasForeignKey("DocumentId")
+                        .HasForeignKey("InventarizationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -129,7 +131,7 @@ namespace InventarizationDemo.Persistence.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Document");
+                    b.Navigation("Inventarization");
 
                     b.Navigation("Item");
 

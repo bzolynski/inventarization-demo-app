@@ -1,6 +1,6 @@
-﻿public sealed class Inventarization : EntityBase
+﻿public sealed class InventarisationDocument : DocumentBase
 {
-    public Inventarization()
+    public InventarisationDocument()
     {
         Positions = new HashSet<InventarizationPosition>();
     }

@@ -1,2 +1,2 @@
 ﻿
-public sealed record CreateInventarisationCommand(Inventarization Inventarization) : ICommand<int>;
+public sealed record CreateInventarisationCommand(InventarisationDocument Inventarization) : ICommand<int>;
