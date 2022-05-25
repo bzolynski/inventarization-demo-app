@@ -4,12 +4,12 @@ import DocumentsScreen from '@src/documents/features/documents';
 import { sharedOptions } from './navigation-options';
 
 export type DocumentsStackParamList = {
-    Documents: undefined;
+    Documents: {};
 };
 
 const DocumentsStack = createNativeStackNavigator<DocumentsStackParamList>();
 
-export const InventarisationStackScreen = () => (
+export const DocumentsStackScreen = () => (
     <WavesBackgroundContainer>
         <DocumentsStack.Navigator screenOptions={{ ...sharedOptions }}>
             <DocumentsStack.Screen

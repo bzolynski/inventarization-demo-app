@@ -51,9 +51,7 @@ const HomeScreen = ({ navigation }: HomeNavigationProp) => {
                         img={inventorizationImg}
                         styles={styles.menuTile}></MenuTile>
                     <MenuTile
-                        onPress={() =>
-                            navigation.navigate('InventarisationStack')
-                        }
+                        onPress={() => navigation.navigate('DocumentsStack')}
                         title="Documents"
                         img={documentsImg}
                         styles={styles.menuTile}></MenuTile>
