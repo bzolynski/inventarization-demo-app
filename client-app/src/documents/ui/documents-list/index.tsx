@@ -1,24 +1,24 @@
-import { Position } from '@src/models';
+import { Document } from '@src/models';
 import React from 'react';
 import { ScrollViewProps, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
-import InventarisationPosition from '../inventarisation-position';
+import DocumentListPosition from '../document-list-position';
 import styles from './styles';
 
 type Props = {
-    positions: Position[];
+    documents: Document[];
 } & ScrollViewProps;
 
-const InventarisationPositions: React.FC<Props> = ({ positions, ...props }) => {
+const DocumentsList: React.FC<Props> = ({ documents, ...props }) => {
     const renderPositions = () => {
-        return positions.map((position) => (
-            <InventarisationPosition key={position.id} position={position} />
+        return documents.map((document) => (
+            <DocumentListPosition key={document.id} document={document} />
         ));
     };
 
     return (
         <View style={[{ flex: 1 }]}>
-            <Text style={styles.title}>Inventarisation positions</Text>
+            <Text style={styles.title}>Documents</Text>
             <ScrollView style={styles.container} {...props}>
                 {renderPositions()}
             </ScrollView>
@@ -26,4 +26,4 @@ const InventarisationPositions: React.FC<Props> = ({ positions, ...props }) => {
     );
 };
 
-export default InventarisationPositions;
+export default DocumentsList;

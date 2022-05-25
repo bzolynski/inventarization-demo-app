@@ -5,6 +5,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { DocumentsStackParamList } from '@src/routing/documents-stack';
 import { DocumentsState } from '@src/documents/data-access/store/documents-reducer';
 import { loadDocuments } from '@src/documents/data-access/store/documents-actions';
+import DocumentsList from '@src/documents/ui/documents-list';
 
 type NavigationProp = NativeStackScreenProps<
     DocumentsStackParamList,
@@ -21,7 +22,11 @@ const DocumentsScreen = ({ navigation }: NavigationProp) => {
         dispatch(loadDocuments());
     }, []);
 
-    return <></>;
+    return (
+        <>
+            <DocumentsList documents={data ?? []}></DocumentsList>
+        </>
+    );
 };
 
 export default DocumentsScreen;

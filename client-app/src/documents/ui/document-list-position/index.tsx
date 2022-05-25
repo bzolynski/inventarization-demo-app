@@ -1,13 +1,13 @@
-import Card from '@src/components/atoms/card';
-import { Position } from '@src/models';
-import { Colors } from '@src/theme/colors';
+import { Document } from '@src/models';
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
+import Card from '@src/components/atoms/card';
 import styles from './styles';
+import documentImg from '@assets/single-document.png';
 
 type Props = {
-    position: Position;
+    document: Document;
 };
 
 const getRandomColor = (): string => {
@@ -15,7 +15,7 @@ const getRandomColor = (): string => {
     return `hsl(${random}, 100%, 30%)`;
 };
 
-const InventarisationPosition = (props: Props) => {
+const DocumentListPosition = (props: Props) => {
     return (
         <Card style={styles.wrapper}>
             <EntypoIcon
@@ -28,7 +28,21 @@ const InventarisationPosition = (props: Props) => {
                 style={[styles.stripe, { backgroundColor: getRandomColor() }]}
             />
             <View style={styles.content}>
-                <View style={styles.firstRow}>
+                <View style={styles.firstColumn}>
+                    <Image
+                        style={{ width: 80, height: 80 }}
+                        source={documentImg}
+                    />
+                </View>
+                <View style={styles.secondColumn}>
+                    <Text>FV 04 - 1010/2022/22r1</Text>
+                    <Text>Typ: {props.document.documentType}</Text>
+                    <Text>
+                        Stan dokumentu: {/*props.document.documentType*/}
+                    </Text>
+                    <Text>Data: {/*props.document.date*/}</Text>
+                </View>
+                {/* <View style={styles.firstRow}>
                     <Text style={styles.name}>{props.position.name}</Text>
                     <View style={styles.quantityWrapper}>
                         <Text>Quantity: </Text>
@@ -41,10 +55,10 @@ const InventarisationPosition = (props: Props) => {
                 <Text style={styles.localizationText}>
                     {props.position.localization}
                 </Text>
-                <Text style={styles.dateText}>{props.position.date}</Text>
+                <Text style={styles.dateText}>{props.position.date}</Text> */}
             </View>
         </Card>
     );
 };
 
-export default InventarisationPosition;
+export default DocumentListPosition;
