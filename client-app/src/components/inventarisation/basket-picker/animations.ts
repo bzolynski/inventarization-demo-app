@@ -4,7 +4,7 @@ import { Animated } from 'react-native';
 const slideDown = (ref: Animated.Value) =>
     Animated.timing(ref, {
         toValue: 0,
-        duration: 300,
+        duration: 200,
         useNativeDriver: true,
     });
 

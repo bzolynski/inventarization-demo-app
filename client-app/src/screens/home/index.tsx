@@ -7,7 +7,7 @@ import MenuTile from '@components/molecules/menu-tile';
 import { signOut } from '@redux-store/actions/auth-actions';
 import { Colors } from '@theme/colors';
 import inventorizationImg from '@assets/stocktaking.png';
-import warehouseImg from '@assets/warehouse.png';
+import documentsImg from '@assets/documents.png';
 import PaddingContainer from '@src/components/templates/padding-container';
 import TopBarSafeContainer from '@src/components/templates/top-bar-safe-container';
 import Ionicon from 'react-native-vector-icons/Ionicons';
@@ -54,8 +54,8 @@ const HomeScreen = ({ navigation }: HomeNavigationProp) => {
                         onPress={() =>
                             navigation.navigate('InventarisationStack')
                         }
-                        title="Warehouse receptions"
-                        img={warehouseImg}
+                        title="Documents"
+                        img={documentsImg}
                         styles={styles.menuTile}></MenuTile>
                 </View>
             </PaddingContainer>

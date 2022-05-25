@@ -20,6 +20,7 @@ import { doesItemExists } from '@src/api';
 import { AxiosError } from 'axios';
 import { InventarisationStackParamList } from '@src/routing/inventarisation-stack';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import BackdropSpinner from '@src/components/molecules/backdrop-spinner';
 
 type NavigationProp = NativeStackScreenProps<
     InventarisationStackParamList,
@@ -34,6 +35,7 @@ const InventarisationScreen = ({ navigation }: NavigationProp) => {
     >((state) => state.inventarizationReducer);
 
     const [positions, setPositions] = useState<Position[]>([]);
+    const [isBusy, setIsBusy] = useState<boolean>(false);
 
     useEffect(() => {
         const arr: Position[] = [];
@@ -55,6 +57,7 @@ const InventarisationScreen = ({ navigation }: NavigationProp) => {
     }, []);
 
     const hideScanner = () => dispatch(setScanning(false));
+    const showScanner = () => dispatch(setScanning(true));
     const hideManualInput = () => dispatch(setManualInputVisible(false));
     const showManualInput = () => dispatch(setManualInputVisible(true));
     const showPicker = () => dispatch(setPickerVisible(true));
@@ -64,13 +67,17 @@ const InventarisationScreen = ({ navigation }: NavigationProp) => {
     });
 
     const tryLoadItem = (code: string) => {
+        hideScanner();
+        setIsBusy(true);
         doesItemExists(code)
             .then((response) => {
                 if (response.data) {
+                    setIsBusy(false);
                     navigation.navigate('CreateInventarizationPosition', {
                         code: code,
                     });
                 } else {
+                    setIsBusy(false);
                     Alert.alert(
                         'Missing item',
                         `No item was found for code ${code}. Do you want to add new item?`,
@@ -78,7 +85,6 @@ const InventarisationScreen = ({ navigation }: NavigationProp) => {
                             {
                                 text: 'Yes',
                                 onPress: () => {
-                                    console.log('NEW ITEM');
                                     navigation.navigate('CreateItem', {
                                         code: code,
                                     });
@@ -87,7 +93,7 @@ const InventarisationScreen = ({ navigation }: NavigationProp) => {
                             {
                                 text: 'No',
                                 onPress: () => {
-                                    console.log('continue scanning...');
+                                    showScanner();
                                 },
                             },
                         ],
@@ -103,27 +109,36 @@ const InventarisationScreen = ({ navigation }: NavigationProp) => {
 
     return (
         <>
-            <TopBarSafeContainer>
-                {pickerVisible ? (
-                    <PaddingContainer>
-                        <TitleBackButton
-                            title="Inventarisation"
-                            style={{ marginBottom: 25 }}
+            <View style={{ flex: 1 }}>
+                <TopBarSafeContainer>
+                    {pickerVisible ? (
+                        <PaddingContainer>
+                            <TitleBackButton
+                                title="Inventarisation"
+                                style={{ marginBottom: 25 }}
+                            />
+                            <BasketPicker
+                                onBasketSelected={(selectedBasket) =>
+                                    dispatch(setScanning(true))
+                                }
+                            />
+                        </PaddingContainer>
+                    ) : undefined}
+                    <View style={[{ flex: 2.5 }]}>
+                        <InventarisationPositions
+                            style={{ flex: 1 }}
+                            positions={positions}
                         />
-                        <BasketPicker
-                            onBasketSelected={(selectedBasket) =>
-                                dispatch(setScanning(true))
-                            }
-                        />
-                    </PaddingContainer>
+                    </View>
+                </TopBarSafeContainer>
+                {isBusy ? (
+                    <BackdropSpinner
+                        animating={isBusy}
+                        size={'large'}
+                        color={'red'}
+                        backdropColor="hsla(0, 0%, 0%, 0.8)"></BackdropSpinner>
                 ) : undefined}
-                <View style={[{ flex: 2.5 }]}>
-                    <InventarisationPositions
-                        style={{ flex: 1 }}
-                        positions={positions}
-                    />
-                </View>
-            </TopBarSafeContainer>
+            </View>
             <Modal
                 animationType="slide"
                 visible={scanning}

@@ -11,3 +11,7 @@ export const doesItemExists = (
 ): Promise<AxiosResponse<boolean>> => {
     return axiosClient.get<boolean>(`${ITEM_ROUTE}/does-item-exists/${code}`);
 };
+
+export const createItem = (item: Item): Promise<AxiosResponse<number>> => {
+    return axiosClient.post(`${ITEM_ROUTE}/create`, item);
+};
