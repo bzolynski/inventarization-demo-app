@@ -1,5 +1,5 @@
 import { Position } from '@src/models';
-import * as inventarizationActionTypes from '../action-types/inventarization-types';
+import * as inventarizationActionTypes from './inventarization-types';
 
 export interface IInventarizationState {
     positions: Position[];

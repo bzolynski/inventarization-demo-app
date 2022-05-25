@@ -1,14 +1,11 @@
 import { Picker } from '@react-native-picker/picker';
-import { useRoute } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { doesItemExists, getByCode } from '@src/api';
+import { getByCode } from '@src/api';
 import { getMany } from '@src/api/localization.api';
 import { AppButton } from '@src/components/atoms/app-button';
 import { AppTextInput } from '@src/components/atoms/app-text-input';
-import InputLabel from '@src/components/atoms/input-label';
 import BackdropSpinner from '@src/components/molecules/backdrop-spinner';
 import { AppPicker } from '@src/components/shared/app-picker';
-import ElevationContainer from '@src/components/templates/elevation-container';
 import { SlideDownContainer } from '@src/components/templates/slide-down-container';
 import { Item, Localization } from '@src/models';
 import { InventarisationStackParamList } from '@src/routing/inventarisation-stack';
@@ -16,13 +13,7 @@ import { Colors } from '@src/theme/colors';
 import { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import {
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    Text,
-    View,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, View } from 'react-native';
 
 type NavigationProp = NativeStackScreenProps<
     InventarisationStackParamList,

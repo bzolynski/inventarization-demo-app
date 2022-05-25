@@ -1,6 +1,5 @@
 import Card from '@src/components/atoms/card';
 import { Position } from '@src/models';
-import { Colors } from '@src/theme/colors';
 import React from 'react';
 import { Text, View } from 'react-native';
 import EntypoIcon from 'react-native-vector-icons/Entypo';

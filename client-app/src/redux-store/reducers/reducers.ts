@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import inventarizationReducer, {
     IInventarizationState,
-} from './inventarization-reducers';
+} from '@src/inventarisation/data-access/store/inventarization-reducers';
 import authReducer, { IAuthState } from './auth-reducers';
 import documentsReducer, {
     DocumentsState,

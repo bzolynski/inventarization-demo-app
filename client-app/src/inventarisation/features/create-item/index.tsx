@@ -1,23 +1,14 @@
-import { useRoute } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { createItem, doesItemExists, getByCode } from '@src/api';
+import { createItem } from '@src/api';
 import { AppButton } from '@src/components/atoms/app-button';
 import { AppTextInput } from '@src/components/atoms/app-text-input';
 import BackdropSpinner from '@src/components/molecules/backdrop-spinner';
 import { SlideDownContainer } from '@src/components/templates/slide-down-container';
-import TopBarSafeContainer from '@src/components/templates/top-bar-safe-container';
 import { Item } from '@src/models';
 import { InventarisationStackParamList } from '@src/routing/inventarisation-stack';
-import { AxiosError } from 'axios';
 import React, { useEffect, useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import {
-    Alert,
-    KeyboardAvoidingView,
-    Platform,
-    Text,
-    View,
-} from 'react-native';
+import { KeyboardAvoidingView, Platform, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 type NavigationProp = NativeStackScreenProps<

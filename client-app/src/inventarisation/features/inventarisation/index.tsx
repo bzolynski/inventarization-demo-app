@@ -1,26 +1,26 @@
 import TitleBackButton from '@src/components/molecules/title-back-button';
 import React, { useEffect, useState } from 'react';
-import { Alert, Modal, StyleSheet, View } from 'react-native';
+import { Alert, Modal, View } from 'react-native';
 import PaddingContainer from '@src/components/templates/padding-container';
 import TopBarSafeContainer from '@src/components/templates/top-bar-safe-container';
 import { Position } from '@src/models';
 import { useDispatch, useSelector } from 'react-redux';
 import { IStore } from '@src/redux-store/reducers/reducers';
-import { IInventarizationState } from '@src/redux-store/reducers/inventarization-reducers';
+import { IInventarizationState } from '@src/inventarisation/data-access/store/inventarization-reducers';
 import {
     setManualInputVisible,
     setPickerVisible,
     setScanning,
-} from '@src/redux-store/actions/inventarization-actions';
-import BasketPicker from '@src/components/inventarisation/basket-picker';
-import InventarizationManualInput from '@src/components/inventarisation/inventarization-manual-input';
-import InventarisationPositions from '@src/components/inventarisation/inventarisation-positions/index.';
-import InventarizationScanner from '@src/components/inventarisation/inventarisation-scanner';
+} from '@src/inventarisation/data-access/store/inventarization-actions';
+import BasketPicker from '@src/inventarisation/ui/basket-picker';
 import { doesItemExists } from '@src/api';
 import { AxiosError } from 'axios';
 import { InventarisationStackParamList } from '@src/routing/inventarisation-stack';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import BackdropSpinner from '@src/components/molecules/backdrop-spinner';
+import InventarisationPositions from '@src/inventarisation/ui/inventarisation-positions';
+import InventarizationScanner from '@src/inventarisation/ui/inventarisation-scanner';
+import InventarizationManualInput from '@src/inventarisation/ui/inventarization-manual-input';
 
 type NavigationProp = NativeStackScreenProps<
     InventarisationStackParamList,

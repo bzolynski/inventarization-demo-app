@@ -1,8 +1,8 @@
 import WavesBackgroundContainer from '@components/templates/waves-background-container';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import CreateInventarizationPosition from '@src/screens/create-inventarisation-position';
-import CreateItemScreen from '@src/screens/create-item';
-import InventarisationScreen from '@src/screens/inventarisation';
+import CreateInventarizationPosition from '@src/inventarisation/features/create-inventarisation-position';
+import CreateItemScreen from '@src/inventarisation/features/create-item';
+import InventarisationScreen from '@src/inventarisation/features/inventarisation';
 import { sharedOptions } from './navigation-options';
 
 export type InventarisationStackParamList = {

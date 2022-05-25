@@ -3,9 +3,9 @@ import { Colors } from '@src/theme/colors';
 import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { Keyboard, Pressable, View } from 'react-native';
-import { AppButton } from '../../atoms/app-button';
-import { AppTextInput } from '../../atoms/app-text-input';
-import BackButtonIcon from '../../atoms/back-button-icon';
+import { AppButton } from '@src/components/atoms/app-button';
+import { AppTextInput } from '@src/components/atoms/app-text-input';
+import BackButtonIcon from '@src/components/atoms/back-button-icon';
 import styles from './styles';
 
 type Inputs = {

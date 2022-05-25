@@ -1,6 +1,6 @@
 import { Position } from '@src/models';
 import { Dispatch } from 'redux';
-import * as inventarizationTypes from '../action-types/inventarization-types';
+import * as inventarizationTypes from './inventarization-types';
 
 export const addPosition = (position: Position) => (dispatch: Dispatch) => {
     dispatch({

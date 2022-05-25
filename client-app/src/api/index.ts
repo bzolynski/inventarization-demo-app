@@ -1,2 +1,2 @@
 export * from './axios-client';
-export * from './item.api';
+export * from '../inventarisation/data-access/item.api';

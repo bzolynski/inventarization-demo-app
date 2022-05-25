@@ -3,6 +3,7 @@ import React from 'react';
 import { ScrollViewProps, Text, View } from 'react-native';
 import { ScrollView } from 'react-native-gesture-handler';
 import InventarisationPosition from '../inventarisation-position';
+
 import styles from './styles';
 
 type Props = {
