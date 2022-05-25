@@ -18,7 +18,6 @@ const DocumentsList: React.FC<Props> = ({ documents, ...props }) => {
 
     return (
         <View style={[{ flex: 1 }]}>
-            <Text style={styles.title}>Documents</Text>
             <ScrollView style={styles.container} {...props}>
                 {renderPositions()}
             </ScrollView>

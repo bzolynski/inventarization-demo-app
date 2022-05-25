@@ -23,12 +23,22 @@ const styles = StyleSheet.create({
         paddingLeft: 15,
         paddingRight: 35,
     },
-    firstColumn: {},
+    firstColumn: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingLeft: 10,
+        paddingRight: 10,
+    },
     secondColumn: {
         flex: 1,
         display: 'flex',
         flexDirection: 'column',
-        paddingLeft: 15,
+        paddingLeft: 10,
+    },
+    number: {
+        fontSize: 20,
+        fontWeight: 'bold',
     },
 });
 

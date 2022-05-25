@@ -12,7 +12,6 @@ const PaddingContainer: React.FC<Props> = ({ children, ...props }) => {
                 {
                     paddingHorizontal: 25,
                     paddingVertical: 30,
-                    flex: 1,
                 },
                 props.style,
             ]}>
