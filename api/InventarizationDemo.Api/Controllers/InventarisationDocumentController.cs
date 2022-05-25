@@ -8,13 +8,13 @@ public class InventarisationDocumentController : BaseController
         return Ok(await Mediator.Send(new CreateInventarisationCommand(createRequest)));
     }
 
-    [HttpPost("get")]
+    [HttpGet("get")]
     public async Task<IActionResult> Get()
     {
         return Ok(await Mediator.Send(new GetManyInventarizationsQuery()));
     }
 
-    [HttpPost("get/{id}")]
+    [HttpGet("get/{id}")]
     public async Task<IActionResult> Get(int id)
     {
         return Ok(await Mediator.Send(new GetInventarizationQuery(id)));
