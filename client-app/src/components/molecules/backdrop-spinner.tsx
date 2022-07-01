@@ -1,6 +1,6 @@
 import React from 'react';
-import Backdrop from '../atoms/backdrop';
-import Spinner, { SpinnerProps } from '@src/components/atoms/spinner';
+import Backdrop from '../../shared/ui/backdrop';
+import Spinner, { SpinnerProps } from '@src/shared/ui/spinner';
 import { View } from 'react-native';
 
 type Props = SpinnerProps & {

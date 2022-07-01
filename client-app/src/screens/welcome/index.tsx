@@ -1,7 +1,7 @@
-import { AppButton } from '@components/atoms/app-button';
+import { AppButton } from '@src/shared/ui/app-button';
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Colors } from '@theme/colors';
+import { Colors } from '@src/shared/theme/colors';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import styles from './styles';
 import { WelcomeStackParamList } from '@src/routing/welcome-stack';

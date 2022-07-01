@@ -6,7 +6,7 @@ import {
     ViewStyle,
 } from 'react-native';
 import wavesBackgroundImg from '@assets/waves-background.png';
-import { BackgroundColors } from '@theme/colors';
+import { BackgroundColors } from '@src/shared/theme/colors';
 
 type Props = {
     style?: StyleProp<ViewStyle>;

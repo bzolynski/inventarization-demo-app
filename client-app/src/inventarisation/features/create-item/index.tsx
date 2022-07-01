@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { createItem } from '@src/api';
-import { AppButton } from '@src/components/atoms/app-button';
-import { AppTextInput } from '@src/components/atoms/app-text-input';
+import { createItem } from '@src/shared/api';
+import { AppButton } from '@src/shared/ui/app-button';
+import { AppTextInput } from '@src/shared/ui/app-text-input';
 import BackdropSpinner from '@src/components/molecules/backdrop-spinner';
 import { SlideDownContainer } from '@src/components/templates/slide-down-container';
 import { Item } from '@src/models';

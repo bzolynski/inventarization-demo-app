@@ -2,7 +2,7 @@ import { Document, DocumentState, DocumentType } from '@src/models';
 import React from 'react';
 import { Image, Text, View } from 'react-native';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
-import Card from '@src/components/atoms/card';
+import Card from '@src/shared/ui/card';
 import styles from './styles';
 import documentImg from '@assets/single-document.png';
 

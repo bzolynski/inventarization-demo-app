@@ -13,7 +13,7 @@ import {
     setScanning,
 } from '@src/inventarisation/data-access/store/inventarization-actions';
 import BasketPicker from '@src/inventarisation/ui/basket-picker';
-import { doesItemExists } from '@src/api';
+import { doesItemExists } from '@src/shared/api';
 import { AxiosError } from 'axios';
 import { InventarisationStackParamList } from '@src/routing/inventarisation-stack';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';

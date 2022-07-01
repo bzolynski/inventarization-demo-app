@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { BackgroundColors } from '@theme/colors';
+import { BackgroundColors } from '@src/shared/theme/colors';
 
 const ColorBackgroundContainer: React.FC = ({ children }) => {
     return (

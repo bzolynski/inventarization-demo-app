@@ -1,6 +1,6 @@
 import React from 'react';
 import { Animated, RegisteredStyle, StyleProp, ViewStyle } from 'react-native';
-import { BackgroundColors } from '@theme/colors';
+import { BackgroundColors } from '@src/shared/theme/colors';
 import WavesBackgroundContainer from './waves-background-container';
 
 type Props = {

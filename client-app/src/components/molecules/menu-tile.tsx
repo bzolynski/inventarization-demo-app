@@ -2,7 +2,7 @@ import React from 'react';
 import { Image } from 'react-native';
 import { Pressable, StyleSheet, Text } from 'react-native';
 import { StyleProp, View, ViewStyle } from 'react-native';
-import Card from '../atoms/card';
+import Card from '../../shared/ui/card';
 
 type CustomProps = {
     styles?: StyleProp<ViewStyle>;

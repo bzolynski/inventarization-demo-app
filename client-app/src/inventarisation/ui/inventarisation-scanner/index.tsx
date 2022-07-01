@@ -2,8 +2,8 @@ import { BarCodeScanningResult } from 'expo-camera';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View, ViewProps } from 'react-native';
 import Ionicon from 'react-native-vector-icons/Ionicons';
-import AppBarCodeScanner from '@src/components/shared/app-bar-code-scanner';
-import BackButtonIcon from '@src/components/atoms/back-button-icon';
+import AppBarCodeScanner from '@src/shared/ui/app-bar-code-scanner';
+import BackButtonIcon from '@src/shared/ui/back-button-icon';
 import styles from './styles';
 
 type CustomProps = {

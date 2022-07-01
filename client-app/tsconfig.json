@@ -9,7 +9,7 @@
             "@components/*": ["./src/components/*"],
             "@screens/*": ["./src/screens/*"],
             "@redux-store/*": ["./src/redux-store/*"],
-            "@theme/*": ["./src/theme/*"],
+            "@theme/*": ["src/shared/theme/*"],
             "@models/*": ["./src/models/*"]
         }
     },

@@ -2,8 +2,8 @@ import { Picker } from '@react-native-picker/picker';
 import React, { useEffect, useRef, useState } from 'react';
 import { Animated } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { AppButton } from '@src/components/atoms/app-button';
-import InputLabel from '@src/components/atoms/input-label';
+import { AppButton } from '@src/shared/ui/app-button';
+import InputLabel from '@src/shared/ui/input-label';
 import ElevationContainer from '@src/components/templates/elevation-container';
 import { slideDown, slideUp } from './animations';
 

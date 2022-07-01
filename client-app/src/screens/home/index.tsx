@@ -5,7 +5,7 @@ import { IAuthState } from '@redux-store/reducers/auth-reducers';
 import { IStore } from '@redux-store/reducers/reducers';
 import MenuTile from '@components/molecules/menu-tile';
 import { signOut } from '@redux-store/actions/auth-actions';
-import { Colors } from '@theme/colors';
+import { Colors } from '@src/shared/theme/colors';
 import inventorizationImg from '@assets/stocktaking.png';
 import documentsImg from '@assets/documents.png';
 import PaddingContainer from '@src/components/templates/padding-container';

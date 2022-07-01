@@ -11,9 +11,9 @@ import {
 } from 'react-native';
 import { useDispatch } from 'react-redux';
 import { signIn } from '@redux-store/actions/auth-actions';
-import { Colors } from '@theme/colors';
-import { AppButton } from '@components/atoms/app-button';
-import { AppTextInput } from '@components/atoms/app-text-input';
+import { Colors } from '@src/shared/theme/colors';
+import { AppButton } from '@src/shared/ui/app-button';
+import { AppTextInput } from '@src/shared/ui/app-text-input';
 import { SlideDownContainer } from '@components/templates/slide-down-container';
 
 type Inputs = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { BackgroundColors, Colors } from '@theme/colors';
+import { BackgroundColors, Colors } from '@src/shared/theme/colors';
 import NavigateBackButton from '@src/components/molecules/navigate-back-button';
 
 type Props = {

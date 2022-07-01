@@ -1,4 +1,4 @@
-import Card from '@src/components/atoms/card';
+import Card from '@src/shared/ui/card';
 import { Position } from '@src/models';
 import React from 'react';
 import { Text, View } from 'react-native';

@@ -1,11 +1,11 @@
-import { useKeyboard } from '@src/hooks';
-import { Colors } from '@src/theme/colors';
+import { useKeyboard } from '@src/shared/hooks';
+import { Colors } from '@src/shared/theme/colors';
 import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { Keyboard, Pressable, View } from 'react-native';
-import { AppButton } from '@src/components/atoms/app-button';
-import { AppTextInput } from '@src/components/atoms/app-text-input';
-import BackButtonIcon from '@src/components/atoms/back-button-icon';
+import { AppButton } from '@src/shared/ui/app-button';
+import { AppTextInput } from '@src/shared/ui/app-text-input';
+import BackButtonIcon from '@src/shared/ui/back-button-icon';
 import styles from './styles';
 
 type Inputs = {

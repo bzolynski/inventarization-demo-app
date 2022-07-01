@@ -1,6 +1,6 @@
-import { INVENTARISATION_DOCUMENT_ROUTE } from '@src/constants';
+import { INVENTARISATION_DOCUMENT_ROUTE } from '@src/shared/constants';
 import { AxiosResponse } from 'axios';
-import axiosClient from '@src/api/axios-client';
+import axiosClient from '@src/shared/api/axios-client';
 
 export class DocumentsApi {
     static getMany = (): Promise<AxiosResponse<Document[]>> =>

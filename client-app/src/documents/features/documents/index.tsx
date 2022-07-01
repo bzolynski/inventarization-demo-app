@@ -10,8 +10,8 @@ import PaddingContainer from '@src/components/templates/padding-container';
 import TitleBackButton from '@src/components/molecules/title-back-button';
 import { View } from 'react-native';
 import TopBarSafeContainer from '@src/components/templates/top-bar-safe-container';
-import { AppButton } from '@src/components/atoms/app-button';
-import { Colors } from '@src/theme/colors';
+import { AppButton } from '@src/shared/ui/app-button';
+import { Colors } from '@src/shared/theme/colors';
 import styles from './styles';
 
 type NavigationProp = NativeStackScreenProps<

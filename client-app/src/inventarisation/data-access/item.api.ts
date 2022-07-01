@@ -1,7 +1,7 @@
-import { ITEM_ROUTE } from '@src/constants';
+import { ITEM_ROUTE } from '@src/shared/constants';
 import { Item } from '@src/models';
 import { AxiosResponse } from 'axios';
-import axiosClient from '@src/api/axios-client';
+import axiosClient from '@src/shared/api/axios-client';
 
 export const getByCode = (code: string): Promise<AxiosResponse<Item>> =>
     axiosClient.get<Item>(`${ITEM_ROUTE}/get-by-code/${code}`);
